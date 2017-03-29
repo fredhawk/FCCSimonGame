@@ -1,3 +1,6 @@
 import css from './style.scss';
 
-console.log('Hi from app.');
+const app = 'app';
+
+
+console.log(`Hi from ${app}.`);
