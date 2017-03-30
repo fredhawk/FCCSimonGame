@@ -46,8 +46,12 @@ module.exports = {
           publicPath: '/dist',
         }),
       }, {
+        // Something wrong with publicPath for scss. Look into title
         test: /\.(jpe?g|png|gif|svg)$/i,
-        use: 'file-loader?name=[name].[ext]&outputPath=images/',
+        use: [
+          'file-loader?name=[path][name].[ext]',
+          // 'image-webpack-loader',
+        ],
       },
     ],
   },
