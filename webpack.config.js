@@ -1,16 +1,47 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 const path = require('path');
+
+const isProd = process.env.NODE_ENV === 'production'; // true or false
+const cssDev = ['style-loader', 'css-loader', {
+  loader: 'postcss-loader',
+  options: {
+    sourceMap: true, plugins: () => [autoprefixer()],
+  },
+}, 'sass-loader'];
+
+const cssProd = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  use: [{
+    loader: 'css-loader',
+    options: { sourceMap: true, importLoaders: 1 },
+  }, {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+      plugins: () => [
+        autoprefixer(),
+      ],
+    },
+  },
+  {
+    loader: 'sass-loader',
+  }],
+  publicPath: '/dist',
+});
+
+const cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
   entry: './src/app.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'app.bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, './src'),
+    contentBase: path.join(__dirname, 'dist'),
     port: 9000,
     stats: 'errors-only',
     open: true,
@@ -26,31 +57,16 @@ module.exports = {
         ],
       }, {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [{
-            loader: 'css-loader',
-            options: { sourceMap: true, importLoaders: 1 },
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              plugins: () => [
-                autoprefixer(),
-              ],
-            },
-          },
-          {
-            loader: 'sass-loader',
-          }],
-          publicPath: '/dist',
-        }),
+        use: cssConfig,
       }, {
         // Something wrong with publicPath for scss. Look into title
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
-          'file-loader?name=[path][name].[ext]',
-          // 'image-webpack-loader',
+          'file-loader?name=[name].[ext]&publicPath=images/&outputPath=images/',
+          {
+            loader: 'image-webpack-loader',
+            options: {},
+          },
         ],
       },
     ],
@@ -66,8 +82,10 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: 'style.css',
-      disable: false,
+      disable: !isProd,
       allChunks: true,
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
   ],
 };
