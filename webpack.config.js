@@ -59,7 +59,6 @@ module.exports = {
         test: /\.scss$/,
         use: cssConfig,
       }, {
-        // Something wrong with publicPath for scss. Look into title
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           'file-loader?name=[name].[ext]&publicPath=images/&outputPath=images/',
@@ -68,6 +67,13 @@ module.exports = {
             options: {},
           },
         ],
+      }, {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=[name].[ext]&publicPath=fonts/&outputPath=fonts/',
+        // options: {
+        //   name: './font/[name].[ext]',
+        // },
+        exclude: [/node_modules/],
       },
     ],
   },
