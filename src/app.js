@@ -1,13 +1,16 @@
 import css from './style.scss';
 
-const colors = ['red', 'blue', 'green', 'yellow'];
-const userSequence = [];
-const currentSequence = [];
-let isStrict = false;
-let roundCount = 0;
-
 function randomizer(colorsArray) {
   return colorsArray[Math.floor(Math.random() * colorsArray.length)];
 }
 
-randomizer(colors);
+const game = {
+  colors: ['red', 'blue', 'green', 'yellow'],
+  userSequence: [],
+  currentSequence: [],
+  isStrict: false,
+  roundCount: 0,
+  makeTurn() {
+    this.current.push(randomizer(this.colors));
+  },
+};
