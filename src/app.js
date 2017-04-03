@@ -1,5 +1,11 @@
 import css from './style.scss';
 
-const app = 'app';
+const colors = ['red', 'blue', 'green', 'yellow'];
+const userSequence = [];
+const computerSequence = [];
 
-console.log(`Hi from ${app}.`);
+function randomizer(colorsArray) {
+  return colorsArray[Math.random(Math.floor() * colorsArray.length)];
+}
+
+randomizer(colors);
