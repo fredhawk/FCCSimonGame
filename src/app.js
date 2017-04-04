@@ -16,8 +16,11 @@ const game = {
     red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
     blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
   },
+  gameLoop() {
+
+  },
   startGame() {
-    // start game
+
   },
   resetGame() {
 
@@ -28,5 +31,12 @@ const game = {
   toggleStrict(strictState) {
     strictState = !strictState;
     return strictState;
+  },
+  handleClick() {
+    // What happens when the user clicks. Restrict to handle clicks within the 4 divs with colors.
+    this.playSound(/* Need to add playedColor to pass in */);
+  },
+  playSound(playedColor) {
+    // Handle playsound based on which color is played.
   },
 };
