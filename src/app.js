@@ -25,4 +25,8 @@ const game = {
   makeTurn() {
     this.current.push(randomizer(this.colors));
   },
+  toggleStrict(strictState) {
+    strictState = !strictState;
+    return strictState;
+  },
 };
