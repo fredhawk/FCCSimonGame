@@ -11,22 +11,25 @@ const game = {
   isStrict: false,
   roundCount: 0,
   gameSounds: {
-    yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
-    green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
-    red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
-    blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
+    red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+    blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+    green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+    yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
   },
   gameLoop() {
 
   },
   startGame() {
-
+    this.resetGame();
   },
   resetGame() {
-
+    this.roundCount = 0;
+    this.userSequence = [];
+    this.currentSequence = [];
   },
   makeTurn() {
-    this.current.push(randomizer(this.colors));
+    this.roundCount = this.addCount(this.roundCount);
+    this.currentSequence.push(randomizer(this.colors));
   },
   toggleStrict(strictState) {
     strictState = !strictState;
@@ -38,5 +41,8 @@ const game = {
   },
   playSound(playedColor) {
     // Handle playsound based on which color is played.
+  },
+  addCount(counter) {
+    return counter + 1;
   },
 };
