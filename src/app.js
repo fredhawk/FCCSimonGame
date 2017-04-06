@@ -31,10 +31,10 @@ const game = {
     this.roundCount = this.addCount(this.roundCount);
     this.currentSequence.push(randomizer(this.colors));
   },
-  toggleStrict(strictState) {
-    strictState = !strictState;
-    return strictState;
-  },
+  // toggleStrict(strictState) {
+  //   strictState = !strictState;
+  //   return strictState;
+  // },
   handleClick() {
     // What happens when the user clicks. Restrict to handle clicks within the 4 divs with colors.
     this.playSound(/* Need to add playedColor to pass in */);
