@@ -1,5 +1,7 @@
 import css from './style.scss';
 
+const yellowField = document.getElementById('yellow');
+
 function randomizer(colorsArray) {
   return colorsArray[Math.floor(Math.random() * colorsArray.length)];
 }
@@ -11,10 +13,10 @@ const game = {
   isStrict: false,
   roundCount: 0,
   gameSounds: {
-    red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
-    blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
-    green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
-    yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
+    // red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+    // blue: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+    // green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+    // yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
   },
   gameLoop() {
 
@@ -35,14 +37,18 @@ const game = {
   //   strictState = !strictState;
   //   return strictState;
   // },
-  handleClick() {
-    // What happens when the user clicks. Restrict to handle clicks within the 4 divs with colors.
-    this.playSound(/* Need to add playedColor to pass in */);
+  handleClick(color) {
+     // What happens when the user clicks. Restrict to handle clicks within the 4 divs with colors.
+    // console.log(color);
+    this.playSound(color);
   },
   playSound(playedColor) {
     // Handle playsound based on which color is played.
+    console.log(playedColor);
   },
   addCount(counter) {
     return counter + 1;
   },
 };
+
+yellowField.addEventListener('click', () => game.handleClick('yellow'));
