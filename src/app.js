@@ -1,6 +1,6 @@
 import css from './style.scss';
 
-const yellowField = document.getElementById('yellow');
+const gameField = document.querySelector('.game');
 const startButton = document.querySelector('.start');
 
 function randomizer(colorsArray) {
@@ -49,11 +49,12 @@ const game = {
   playSound(playedColor) {
     // Handle playsound based on which color is played.
     console.log(playedColor);
+    this.gameSounds[playedColor].play();
   },
   addCount(counter) {
     return counter + 1;
   },
 };
 
-yellowField.addEventListener('click', () => game.handleClick('yellow'));
+gameField.addEventListener('click', e => game.handleClick(e.target.id));
 startButton.addEventListener('click', () => game.startGame());
