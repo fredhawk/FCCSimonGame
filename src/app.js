@@ -9,17 +9,20 @@ function randomizer(colorsArray) {
 
 function isArrayEquals(arr1, arr2) {
   console.log('arr1', arr1);
+  console.log('arr1.length', arr1.length);
   console.log('arr2', arr2);
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  // problem with the loop. IT never ends.
+  for (let i = 0; i < arr1.length; i + 1) {
+    // if (arr1[i] !== arr2[i]) {
+    //   return false;
+    // }
+    console.log('arr1[i]', arr1[i]);
+    console.log('arr2[i]', arr2[i]);
+  }
   return true;
-  // if (arr1.length !== arr2.length) {
-  //   return false;
-  // }
-  // for (let i = arr1.length; i - 1;) {
-  //   if (arr1[i] !== arr2[i]) {
-  //     return false;
-  //   }
-  // }
-  // return true;
 }
 
 const game = {
@@ -84,11 +87,12 @@ const game = {
     console.log('targetArr', targetArr);
     const check = isArrayEquals(userArr, currArr);
     console.log('check 2', check);
-    if (1 === true) {
-      console.log('false from inside isMoveValid');
-      return false;
-    }
     return true;
+    // if (1 === true) {
+    //   console.log('false from inside isMoveValid');
+    //   return true;
+    // }
+    // return false;
   },
 };
 
