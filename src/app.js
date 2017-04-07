@@ -34,6 +34,7 @@ const game = {
   makeTurn() {
     this.roundCount = this.addCount(this.roundCount);
     this.currentSequence.push(randomizer(this.colors));
+    this.userSequence = [];
     console.log(this.roundCount);
     console.log(this.currentSequence);
   },
@@ -42,9 +43,10 @@ const game = {
   //   return strictState;
   // },
   handleClick(color) {
-     // What happens when the user clicks. Restrict to handle clicks within the 4 divs with colors.
-    // console.log(color);
     this.playSound(color);
+    // push color to userSequence
+    this.userSequence.push(color);
+    console.log(this.userSequence);
   },
   playSound(playedColor) {
     // Handle playsound based on which color is played.
