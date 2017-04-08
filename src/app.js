@@ -26,7 +26,7 @@ function isArrayEquals(arr1, arr2) {
 
 const game = {
   colors: ['red', 'blue', 'green', 'yellow'],
-  userSequence: ['blue', 'red'],
+  userSequence: [],
   targetSequence: ['blue', 'red', 'green', 'yellow'],
   isStrict: false,
   roundCount: 0,
@@ -38,6 +38,14 @@ const game = {
   },
   gameLoop() {
 
+  },
+  playSound(playedColor) {
+    this.gameSounds[playedColor].play();
+  },
+  playSoundSequence(sequenceArray) {
+    sequenceArray.forEach((color, index) => {
+      setTimeout(() => this.playSound(color), 700 * (index + 1));
+    });
   },
   startGame() {
     this.resetGame();
@@ -52,6 +60,7 @@ const game = {
     this.roundCount = this.addCount(this.roundCount);
     this.targetSequence.push(randomizer(this.colors));
     this.userSequence = [];
+    this.playSoundSequence(this.targetSequence);
     console.log(this.roundCount);
     console.log(this.targetSequence);
   },
@@ -63,17 +72,14 @@ const game = {
     this.playSound(color);
     this.userSequence.push(color);
     // check if move isValid
-    const check = this.isMoveValid(this.userSequence, this.targetSequence);
-    console.log('check', check);
-
-    if (check) {
+    if (this.isMoveValid(this.userSequence, this.targetSequence)) {
       console.log('they are the same');
+      if (this.userSequence.length === this.targetSequence.length) {
+        this.makeTurn();
+      }
     } else {
       console.log('they are different');
     }
-  },
-  playSound(playedColor) {
-    this.gameSounds[playedColor].play();
   },
   addCount(counter) {
     return counter + 1;
@@ -84,11 +90,7 @@ const game = {
     console.log('currArr', currArr);
     console.log('userArr', userArr);
     console.log('targetArr', targetArr);
-    // const check = isArrayEquals(userArr, currArr);
-    // console.log('check 2', check);
-    // return true;
     if (isArrayEquals(userArr, currArr) === true) {
-      console.log('false from inside isMoveValid');
       return true;
     }
     return false;
