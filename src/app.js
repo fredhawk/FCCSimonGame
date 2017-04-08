@@ -14,11 +14,10 @@ function isArrayEquals(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
   }
-  // problem with the loop. IT never ends.
-  for (let i = 0; i < arr1.length; i + 1) {
-    // if (arr1[i] !== arr2[i]) {
-    //   return false;
-    // }
+  for (let i = 0; i < arr1.length; i += 1) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
     console.log('arr1[i]', arr1[i]);
     console.log('arr2[i]', arr2[i]);
   }
@@ -85,14 +84,14 @@ const game = {
     console.log('currArr', currArr);
     console.log('userArr', userArr);
     console.log('targetArr', targetArr);
-    const check = isArrayEquals(userArr, currArr);
-    console.log('check 2', check);
-    return true;
-    // if (1 === true) {
-    //   console.log('false from inside isMoveValid');
-    //   return true;
-    // }
-    // return false;
+    // const check = isArrayEquals(userArr, currArr);
+    // console.log('check 2', check);
+    // return true;
+    if (isArrayEquals(userArr, currArr) === true) {
+      console.log('false from inside isMoveValid');
+      return true;
+    }
+    return false;
   },
 };
 
