@@ -27,7 +27,7 @@ function isArrayEquals(arr1, arr2) {
 const game = {
   colors: ['red', 'blue', 'green', 'yellow'],
   userSequence: [],
-  targetSequence: ['blue', 'red', 'green', 'yellow'],
+  targetSequence: [],
   isStrict: false,
   roundCount: 0,
   gameSounds: {
@@ -57,12 +57,16 @@ const game = {
     this.makeTurn();
   },
   makeTurn() {
-    this.roundCount = this.addCount(this.roundCount);
-    this.targetSequence.push(randomizer(this.colors));
-    this.userSequence = [];
-    this.playSoundSequence(this.targetSequence);
-    console.log(this.roundCount);
-    console.log(this.targetSequence);
+    if (this.roundCount < 21) {
+      this.roundCount = this.addCount(this.roundCount);
+      this.targetSequence.push(randomizer(this.colors));
+      this.userSequence = [];
+      this.playSoundSequence(this.targetSequence);
+      console.log(this.roundCount);
+      console.log(this.targetSequence);
+    } else {
+      console.log('You won');
+    }
   },
   // toggleStrict(strictState) {
   //   strictState = !strictState;
