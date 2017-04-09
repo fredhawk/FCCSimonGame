@@ -2,6 +2,7 @@ import css from './style.scss';
 
 const gameField = document.querySelector('.game');
 const startButton = document.querySelector('.start');
+const round = document.querySelector('.roundcounter');
 
 function randomizer(colorsArray) {
   return colorsArray[Math.floor(Math.random() * colorsArray.length)];
@@ -27,7 +28,7 @@ function isArrayEquals(arr1, arr2) {
 const game = {
   colors: ['red', 'blue', 'green', 'yellow'],
   userSequence: [],
-  targetSequence: [],
+  targetSequence: ['red', 'blue', 'green', 'yellow'],
   isStrict: false,
   roundCount: 0,
   gameSounds: {
@@ -47,6 +48,9 @@ const game = {
       setTimeout(() => this.playSound(color), 700 * (index + 1));
     });
   },
+  addCount(counter) {
+    return counter + 1;
+  },
   startGame() {
     this.resetGame();
   },
@@ -59,6 +63,7 @@ const game = {
   makeTurn() {
     if (this.roundCount < 21) {
       this.roundCount = this.addCount(this.roundCount);
+      round.textContent = this.roundCount;
       this.targetSequence.push(randomizer(this.colors));
       this.userSequence = [];
       this.playSoundSequence(this.targetSequence);
@@ -85,9 +90,6 @@ const game = {
       console.log('they are different');
     }
   },
-  addCount(counter) {
-    return counter + 1;
-  },
   isMoveValid(userArr, targetArr) {
     const userLen = userArr.length;
     const currArr = targetArr.slice(0, userLen);
@@ -103,3 +105,4 @@ const game = {
 
 gameField.addEventListener('click', e => game.handleClick(e.target.id));
 startButton.addEventListener('click', () => game.startGame());
+window.onload = game.startGame();
