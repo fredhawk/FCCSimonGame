@@ -37,15 +37,18 @@ const game = {
     green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
     yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
   },
-  gameLoop() {
-
+  lightUpTile(tile) {
+    const color = document.getElementById(tile);
+    color.classList.add('lightup');
+    setTimeout(() => color.classList.remove('lightup'), 350);
   },
-  playSound(playedColor) {
-    this.gameSounds[playedColor].play();
+  playSound(tile) {
+    this.gameSounds[tile].play();
   },
   playSoundSequence(sequenceArray) {
     sequenceArray.forEach((color, index) => {
       setTimeout(() => this.playSound(color), 700 * (index + 1));
+      setTimeout(() => this.lightUpTile(color), 700 * (index + 1));
     });
   },
   addCount(counter) {
@@ -77,9 +80,10 @@ const game = {
   //   strictState = !strictState;
   //   return strictState;
   // },
-  handleClick(color) {
-    this.playSound(color);
-    this.userSequence.push(color);
+  handleClick(tile) {
+    this.playSound(tile);
+    this.lightUpTile(tile);
+    this.userSequence.push(tile);
     // check if move isValid
     if (this.isMoveValid(this.userSequence, this.targetSequence)) {
       console.log('they are the same');
