@@ -61,13 +61,19 @@ const game = {
     this.roundCount = 0;
     this.userSequence = [];
     this.targetSequence = [];
+    this.nextTurn();
     this.makeTurn();
   },
-  makeTurn() {
+  nextTurn() {
+    this.roundCount = this.addCount(this.roundCount);
+    round.textContent = this.roundCount;
+    this.targetSequence.push(randomizer(this.colors));
+  },
+  makeTurn(whichTurn) {
     if (this.roundCount < 21) {
-      this.roundCount = this.addCount(this.roundCount);
-      round.textContent = this.roundCount;
-      this.targetSequence.push(randomizer(this.colors));
+      if (whichTurn === 'next') {
+        this.nextTurn();
+      }
       this.userSequence = [];
       this.playSoundSequence(this.targetSequence);
       console.log(this.roundCount);
@@ -88,10 +94,14 @@ const game = {
     if (this.isMoveValid(this.userSequence, this.targetSequence)) {
       console.log('they are the same');
       if (this.userSequence.length === this.targetSequence.length) {
-        this.makeTurn();
+        this.makeTurn('next');
       }
     } else {
       console.log('they are different');
+      if (this.isStrict === true) {
+        // game over show message that game is over.
+      }
+      this.makeTurn('repeat');
     }
   },
   isMoveValid(userArr, targetArr) {
