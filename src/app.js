@@ -55,6 +55,9 @@ const game = {
   addCount(counter) {
     return counter + 1;
   },
+  gameEnd() {
+    gameField.removeEventListener(`click`, game.handleClick);
+  },
   startGame() {
     this.resetGame();
     gameField.addEventListener(`click`, game.handleClick);
@@ -73,7 +76,7 @@ const game = {
     this.targetSequence.push(randomizer(this.colors));
   },
   makeTurn(whichTurn) {
-    if (this.roundCount < 21) {
+    if (this.roundCount < 3) {
       if (whichTurn === `repeat`) {
         end.textContent = `Wrong sequence. Try again`;
       }
@@ -87,6 +90,7 @@ const game = {
       console.log(this.targetSequence);
     } else {
       end.textContent = `You won!`;
+      game.gameEnd();
     }
   },
   // toggleStrict(strictState) {
@@ -108,7 +112,7 @@ const game = {
       console.log(`they are different`);
       if (game.isStrict === true) {
         end.textContent = `You failed. Now you have to start over!`;
-        gameField.removeEventListener(`click`, game.handleClick);
+        game.gameEnd();
         return;
       }
       game.makeTurn(`repeat`);
