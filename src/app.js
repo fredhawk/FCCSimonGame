@@ -76,7 +76,7 @@ const game = {
     this.targetSequence.push(randomizer(this.colors));
   },
   makeTurn(whichTurn) {
-    if (this.roundCount < 3) {
+    if (this.roundCount < 21) {
       if (whichTurn === `repeat`) {
         end.textContent = `Wrong sequence. Try again`;
       }
