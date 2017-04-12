@@ -4,6 +4,7 @@ const gameField = document.querySelector('.game');
 const startButton = document.querySelector('.start');
 const round = document.querySelector('.roundcounter');
 const end = document.querySelector('.end-message');
+const strictMode = document.querySelector('.strict-mode');
 
 function randomizer(colorsArray) {
   return colorsArray[Math.floor(Math.random() * colorsArray.length)];
@@ -30,7 +31,7 @@ const game = {
   colors: ['red', 'blue', 'green', 'yellow'],
   userSequence: [],
   targetSequence: ['red', 'blue', 'green', 'yellow'],
-  isStrict: true,
+  isStrict: false,
   roundCount: 0,
   gameSounds: {
     red: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
@@ -60,6 +61,9 @@ const game = {
   },
   startGame() {
     this.resetGame();
+    if (strictMode.checked === true) {
+      this.isStrict = this.toggleStrict(this.isStrict);
+    }
     gameField.addEventListener('click', this.playGame);
   },
   resetGame() {
@@ -93,10 +97,10 @@ const game = {
       game.gameEnd();
     }
   },
-  // toggleStrict(strictState) {
-  //   strictState = !strictState;
-  //   return strictState;
-  // },
+  toggleStrict(strictState) {
+    const newStrict = !strictState;
+    return newStrict;
+  },
   handleClick(tile) {
     this.playSound(tile);
     this.lightUpTile(tile);
