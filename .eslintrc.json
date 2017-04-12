@@ -10,7 +10,7 @@
     "rules": {
         "no-console": 0,
         "no-unused-vars": 0,
-        "quotes": [0, "backtick"]
+        "quotes": [0, "single"]
     },
     "globals": {
         "document": false
