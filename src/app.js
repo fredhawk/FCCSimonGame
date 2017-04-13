@@ -56,15 +56,18 @@ const game = {
   addCount(counter) {
     return counter + 1;
   },
-  gameEnd() {
+  removeClick() {
     gameField.removeEventListener('click', this.playGame);
+  },
+  addClick() {
+    gameField.addEventListener('click', this.playGame);
   },
   startGame() {
     this.resetGame();
     if (strictMode.checked === true) {
       this.isStrict = this.toggleStrict(this.isStrict);
     }
-    gameField.addEventListener('click', this.playGame);
+    this.addClick();
   },
   resetGame() {
     this.roundCount = 0;
@@ -90,11 +93,12 @@ const game = {
       }
       this.userSequence = [];
       this.playSoundSequence(this.targetSequence);
+      this.addClick();
       console.log(this.roundCount);
       console.log(this.targetSequence);
     } else {
       end.textContent = 'You won!';
-      game.gameEnd();
+      game.removeClick();
     }
   },
   toggleStrict(strictState) {
@@ -105,7 +109,6 @@ const game = {
     this.playSound(tile);
     this.lightUpTile(tile);
     this.userSequence.push(tile);
-    // check if move isValid
     if (this.isMoveValid(this.userSequence, this.targetSequence)) {
       console.log('they are the same');
       if (this.userSequence.length === this.targetSequence.length) {
@@ -115,7 +118,7 @@ const game = {
       console.log('they are different');
       if (this.isStrict === true) {
         end.textContent = 'You failed. Now you have to start over!';
-        this.gameEnd();
+        this.removeClick();
         return;
       }
       this.makeTurn('repeat');
