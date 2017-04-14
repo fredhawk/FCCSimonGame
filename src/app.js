@@ -34,6 +34,12 @@ const game = {
     green: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
     yellow: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
   },
+  messages: {
+    win: 'You won!',
+    lose: 'You failed. Now you have to start over!',
+    retry: 'Wrong sequence. Try again',
+    next: 'You are doing great! Keep it up!',
+  },
   lightUpTile(tile) {
     const color = document.getElementById(tile);
     color.classList.add('lightup');
@@ -88,16 +94,16 @@ const game = {
   makeTurn(whichTurn) {
     if (this.roundCount < 21) {
       if (whichTurn === 'repeat') {
-        end.textContent = 'Wrong sequence. Try again';
+        end.textContent = this.messages.retry;
       }
       if (whichTurn === 'next') {
-        end.textContent = 'You are doing great! Keep it up!';
+        end.textContent = this.messages.next;
         this.nextTurn();
       }
       this.userSequence = [];
       this.playSoundSequence(this.targetSequence);
     } else {
-      end.textContent = 'You won!';
+      end.textContent = this.messages.win;
       game.removeClick();
     }
   },
@@ -111,7 +117,7 @@ const game = {
       }
     } else {
       if (this.isStrict === true) {
-        end.textContent = 'You failed. Now you have to start over!';
+        end.textContent = this.messages.lose;
         this.removeClick();
         return;
       }
