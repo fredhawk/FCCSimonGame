@@ -11,9 +11,6 @@ function randomizer(colorsArray) {
 }
 
 function isArrayEquals(arr1, arr2) {
-  console.log('arr1', arr1);
-  console.log('arr1.length', arr1.length);
-  console.log('arr2', arr2);
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -21,8 +18,6 @@ function isArrayEquals(arr1, arr2) {
     if (arr1[i] !== arr2[i]) {
       return false;
     }
-    console.log('arr1[i]', arr1[i]);
-    console.log('arr2[i]', arr2[i]);
   }
   return true;
 }
@@ -48,9 +43,13 @@ const game = {
     this.gameSounds[tile].play();
   },
   playSoundSequence(sequenceArray) {
-    sequenceArray.forEach((color, index) => {
+    this.removeClick();
+    sequenceArray.forEach((color, index, array) => {
       setTimeout(() => this.playSound(color), 700 * (index + 1));
       setTimeout(() => this.lightUpTile(color), 700 * (index + 1));
+      setTimeout(() => {
+        this.addClick();
+      }, 700 * array.length);
     });
   },
   addCount(counter) {
@@ -93,9 +92,6 @@ const game = {
       }
       this.userSequence = [];
       this.playSoundSequence(this.targetSequence);
-      this.addClick();
-      console.log(this.roundCount);
-      console.log(this.targetSequence);
     } else {
       end.textContent = 'You won!';
       game.removeClick();
@@ -110,12 +106,10 @@ const game = {
     this.lightUpTile(tile);
     this.userSequence.push(tile);
     if (this.isMoveValid(this.userSequence, this.targetSequence)) {
-      console.log('they are the same');
       if (this.userSequence.length === this.targetSequence.length) {
         this.makeTurn('next');
       }
     } else {
-      console.log('they are different');
       if (this.isStrict === true) {
         end.textContent = 'You failed. Now you have to start over!';
         this.removeClick();
@@ -131,9 +125,6 @@ const game = {
   isMoveValid(userArr, targetArr) {
     const userLen = userArr.length;
     const currArr = targetArr.slice(0, userLen);
-    console.log('currArr', currArr);
-    console.log('userArr', userArr);
-    console.log('targetArr', targetArr);
     if (isArrayEquals(userArr, currArr) === true) {
       return true;
     }
