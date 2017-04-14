@@ -53,9 +53,7 @@ const game = {
     sequenceArray.forEach((color, index, array) => {
       setTimeout(() => this.playSound(color), 700 * (index + 1));
       setTimeout(() => this.lightUpTile(color), 700 * (index + 1));
-      setTimeout(() => {
-        this.addClick();
-      }, 700 * array.length);
+      setTimeout(() => this.addClick(), 700 * array.length);
     });
   },
   addCount(counter) {
@@ -92,7 +90,7 @@ const game = {
     this.targetSequence.push(randomizer(this.colors));
   },
   makeTurn(whichTurn) {
-    if (this.roundCount < 21) {
+    if (this.roundCount < 2) {
       if (whichTurn === 'repeat') {
         end.textContent = this.messages.retry;
       }
@@ -104,7 +102,7 @@ const game = {
       this.playSoundSequence(this.targetSequence);
     } else {
       end.textContent = this.messages.win;
-      game.removeClick();
+      this.removeClick();
     }
   },
   handleClick(tile) {
