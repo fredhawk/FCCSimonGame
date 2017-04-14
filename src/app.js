@@ -6,8 +6,8 @@ const round = document.querySelector('.roundcounter');
 const end = document.querySelector('.end-message');
 const strictMode = document.querySelector('.strict-mode');
 
-function randomizer(colorsArray) {
-  return colorsArray[Math.floor(Math.random() * colorsArray.length)];
+function randomizer(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function isArrayEquals(arr1, arr2) {
