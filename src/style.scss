@@ -1,29 +1,91 @@
 body {
   .wrapper {
+    width: 600px;
+    margin: 0 auto;
     .game {
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
+      width: 100vw;
+      height: 300px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       .blip {
-        opacity: 0.4;
-      }
-      #yellow {
-        background: yellow;
-      }
-      #red {
-        background: red;
-      }
-      #green {
-        background: green;
-      }
-      #blue {
-        background: blue;
+
       }
       .lightup {
         opacity: 1;
+      }
+      .circles {
+        position: relative;
+        opacity: 0.8;
+        width: 100%;
+      }
+      .circle-one {
+        position: absolute;
+        left:20%;
+        transform-origin: 46% 53%;
+        animation: circles 4s linear infinite reverse;
+      }
+      .circle-two {
+        position: absolute;
+        top: 10px;
+        left:20%;
+        transform-origin: 47% 54%;
+        animation: circles 3.9s linear infinite;
+      }
+      .circle-three {
+        position: absolute;
+        left:20%;
+        top: -2px;
+        transform-origin: 55% 55%;
+        animation: circles 4.1s linear infinite;
+      }
+      #yellow-one {
+        fill: #fdd835;
+      }
+      #yellow-two {
+        fill: #ffeb3b;
+      }
+      #yellow-three {
+        fill: url(#yellow-radial);
+      }
+      #red-one {
+        fill: #d32f2f;
+      }
+      #red-two {
+        fill: #e53935;
+      }
+      #red-three {
+        fill: url(#red-radial);
+      }
+      #green-one {
+        fill: #43a047;
+      }
+      #green-two {
+        fill: #4caf50;
+      }
+      #green-three {
+        fill: url(#green-radial);
+      }
+      #blue-one {
+        fill: #1e88e5;
+      }
+      #blue-two {
+        fill: #2196f3;
+      }
+      #blue-three {
+        fill: url(#blue-radial);
+      }
+
+      @keyframes circles {
+        0% {
+          transform: rotate(0) scale(0.85);
+        }
+        50% {
+          transform: rotate(360deg) scale(1.03);
+        }
+        100% {
+          transform: rotate(720deg) scale(0.85);
+        }
       }
     }
   }
