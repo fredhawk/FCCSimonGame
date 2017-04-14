@@ -61,21 +61,22 @@ const game = {
   addClick() {
     gameField.addEventListener('click', this.playGame);
   },
-  toggleStrict(strictState) {
-    return !strictState;
+  handleStrict(strictState) {
+    if (strictState === true) {
+      return true;
+    }
+    return false;
   },
   startGame() {
-    this.resetGame();
-    if (strictMode.checked === true) {
-      this.isStrict = this.toggleStrict(this.isStrict);
-    }
     this.addClick();
+    this.resetGame();
   },
   resetGame() {
     this.roundCount = 0;
     this.userSequence = [];
     this.targetSequence = [];
     end.textContent = '';
+    this.isStrict = this.handleStrict(strictMode.checked);
     this.nextTurn();
     this.makeTurn();
   },
