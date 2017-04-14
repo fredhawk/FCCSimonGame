@@ -61,6 +61,9 @@ const game = {
   addClick() {
     gameField.addEventListener('click', this.playGame);
   },
+  toggleStrict(strictState) {
+    return !strictState;
+  },
   startGame() {
     this.resetGame();
     if (strictMode.checked === true) {
@@ -96,10 +99,6 @@ const game = {
       end.textContent = 'You won!';
       game.removeClick();
     }
-  },
-  toggleStrict(strictState) {
-    const newStrict = !strictState;
-    return newStrict;
   },
   handleClick(tile) {
     this.playSound(tile);
