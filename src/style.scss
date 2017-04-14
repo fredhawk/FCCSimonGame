@@ -19,61 +19,67 @@ body {
         opacity: 0.8;
         width: 100%;
       }
+      .circle {
+        fill: none;
+      }
       .circle-one {
         position: absolute;
         left:20%;
-        transform-origin: 46% 53%;
+        stroke-width: 15px;
+        transform-origin: 49% 53%;
         animation: circles 4s linear infinite reverse;
       }
       .circle-two {
         position: absolute;
         top: 10px;
         left:20%;
-        transform-origin: 47% 54%;
+        stroke-width: 12px;
+        transform-origin: 47% 52%;
         animation: circles 3.9s linear infinite;
       }
       .circle-three {
         position: absolute;
         left:20%;
         top: -2px;
-        transform-origin: 55% 55%;
+        stroke-width: 10px;
+        transform-origin: 51% 53%;
         animation: circles 4.1s linear infinite;
       }
       #yellow-one {
-        fill: #fdd835;
+        stroke: #fdd835;
       }
       #yellow-two {
-        fill: #ffeb3b;
+        stroke: #ffeb3b;
       }
       #yellow-three {
-        fill: url(#yellow-radial);
+        stroke: url(#yellow-radial);
       }
       #red-one {
-        fill: #d32f2f;
+        stroke: #d32f2f;
       }
       #red-two {
-        fill: #e53935;
+        stroke: #e53935;
       }
       #red-three {
-        fill: url(#red-radial);
+        stroke: url(#red-radial);
       }
       #green-one {
-        fill: #43a047;
+        stroke: #43a047;
       }
       #green-two {
-        fill: #4caf50;
+        stroke: #4caf50;
       }
       #green-three {
-        fill: url(#green-radial);
+        stroke: url(#green-radial);
       }
       #blue-one {
-        fill: #1e88e5;
+        stroke: #1e88e5;
       }
       #blue-two {
-        fill: #2196f3;
+        stroke: #2196f3;
       }
       #blue-three {
-        fill: url(#blue-radial);
+        stroke: url(#blue-radial);
       }
 
       @keyframes circles {
