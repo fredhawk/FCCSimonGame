@@ -25,61 +25,85 @@ body {
       .circle-one {
         position: absolute;
         left:20%;
-        stroke-width: 15px;
-        transform-origin: 49% 53%;
-        animation: circles 4s linear infinite reverse;
+        stroke-width: 13px;
       }
       .circle-two {
         position: absolute;
         top: 10px;
         left:20%;
-        stroke-width: 12px;
-        transform-origin: 47% 52%;
-        animation: circles 3.9s linear infinite;
       }
       .circle-three {
         position: absolute;
         left:20%;
         top: -2px;
-        stroke-width: 10px;
-        transform-origin: 51% 53%;
-        animation: circles 4.1s linear infinite;
       }
       #yellow-one {
         stroke: #fdd835;
+        transform-origin: 47% 50%;
+        animation: circles 3.6s linear infinite;
       }
       #yellow-two {
         stroke: #ffeb3b;
+        stroke-width: 7px;
+        transform-origin: 45% 51%;
+        animation: circles 3.9s linear infinite reverse;
       }
       #yellow-three {
         stroke: url(#yellow-radial);
+        stroke-width: 10px;
+        transform-origin: 46% 49%;
+        animation: circles 3.5s linear infinite;
       }
       #red-one {
         stroke: #d32f2f;
+        transform-origin: 51% 53%;
+        animation: circles 4s linear infinite reverse;
       }
       #red-two {
         stroke: #e53935;
+        stroke-width: 10px;
+        transform-origin: 50% 52%;
+        animation: circles 3.9s linear infinite;
       }
       #red-three {
         stroke: url(#red-radial);
+        stroke-width: 8px;
+        transform-origin: 49% 53%;
+        animation: circles 4.1s linear infinite;
       }
       #green-one {
         stroke: #43a047;
+        transform-origin: 45% 43%;
+        animation: circles 4.4s linear infinite;
       }
       #green-two {
         stroke: #4caf50;
+        stroke-width: 8px;
+        transform-origin: 44% 47%;
+        animation: circles 4.3s linear infinite;
       }
       #green-three {
         stroke: url(#green-radial);
+        stroke-width: 11px;
+        transform-origin: 47% 46%;
+        animation: circles 4.5s linear infinite reverse;
       }
       #blue-one {
         stroke: #1e88e5;
+        transform-origin:53% 53%;
+        animation: circles 2.9s linear infinite reverse;
       }
       #blue-two {
         stroke: #2196f3;
+        stroke-width: 9px;
+        transform-origin: 52% 52%;
+        animation: circles 3.3s linear infinite;
       }
       #blue-three {
         stroke: url(#blue-radial);
+        stroke-width: 10px;
+        transform-origin: 50% 51%;
+        animation: circles 3.1s linear infinite;
       }
 
       @keyframes circles {
