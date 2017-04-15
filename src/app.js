@@ -123,8 +123,7 @@ const game = {
     }
   },
   playGame(e) {
-    console.log(e.target);
-    const tile = e.target.parentNode.parentNode.id;
+    const tile = e.target.id;
     game.handleClick(tile);
   },
   isMoveValid(userArr, targetArr) {
