@@ -123,6 +123,7 @@ const game = {
     }
   },
   playGame(e) {
+    console.log(e.target);
     const tile = e.target.parentNode.parentNode.id;
     game.handleClick(tile);
   },
