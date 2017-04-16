@@ -110,20 +110,15 @@ const game = {
     this.targetSequence.push(randomizer(this.colors));
   },
   makeTurn(whichTurn) {
-    if (this.roundCount < 2) {
-      if (whichTurn === 'repeat') {
-        end.textContent = this.messages.retry;
-      }
-      if (whichTurn === 'next') {
-        end.textContent = this.messages.next;
-        this.nextTurn();
-      }
-      this.userSequence = [];
-      this.playSoundSequence(this.targetSequence);
-    } else {
-      end.textContent = this.messages.win;
-      this.removeClick();
+    if (whichTurn === 'repeat') {
+      end.textContent = this.messages.retry;
     }
+    if (whichTurn === 'next') {
+      end.textContent = this.messages.next;
+      this.nextTurn();
+    }
+    this.userSequence = [];
+    this.playSoundSequence(this.targetSequence);
   },
   handleClick(tile) {
     this.playSound(tile);
@@ -131,6 +126,11 @@ const game = {
     this.userSequence.push(tile);
     if (this.isMoveValid(this.userSequence, this.targetSequence)) {
       if (this.userSequence.length === this.targetSequence.length) {
+        if (this.roundCount === 20) {
+          end.textContent = this.messages.win;
+          this.removeClick();
+          return;
+        }
         this.makeTurn('next');
       }
     } else {
