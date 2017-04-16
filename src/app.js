@@ -40,10 +40,30 @@ const game = {
     retry: 'Wrong sequence. Try again',
     next: 'You are doing great! Keep it up!',
   },
+  removeFillFromCircle(colorId) {
+    document.getElementById(colorId).style.fill = 'none';
+  },
   lightUpTile(tile) {
     const color = document.getElementById(tile);
-    color.classList.add('lightup');
-    setTimeout(() => color.classList.remove('lightup'), 350);
+    const tileToFill = color.childNodes[1].childNodes[5];
+    switch (tile) {
+      case 'yellow':
+        tileToFill.style.fill = 'url(#yellow-radial)';
+        break;
+      case 'red':
+        tileToFill.style.fill = 'url(#red-radial)';
+        break;
+      case 'green':
+        tileToFill.style.fill = 'url(#green-radial)';
+        break;
+      case 'blue':
+        tileToFill.style.fill = 'url(#blue-radial)';
+        break;
+      default:
+        tileToFill.stule.fill = 'none';
+        break;
+    }
+    setTimeout(() => this.removeFillFromCircle(tileToFill.id), 350);
   },
   playSound(tile) {
     this.gameSounds[tile].play();
