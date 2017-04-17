@@ -7,91 +7,89 @@
 </head>
 <body>
   <div class="wrapper">
-    <h1 class="title">Simon says</h1>
-    <p class="tagline">Whatever Simon says you must do!</p>
-    <button class="start">Start</button>
-    <div class="roundcounter"></div>
-    <label for="strict-mode">Stict Mode: </label>
-    <input type="checkbox" class="strict-mode" name="strictmode" value="strict-mode" />
-    <div class="end-message">Game running!</div>
-    <div class="game">
-      <div class="blip" id="yellow">
-        <div class="circles">
-          <svg height="125" width="125" id="yellow-one" class="circle circle-one">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="yellow-two" class="circle circle-two">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="yellow-three" class="circle circle-three yellow">
-            <defs>
-              <radialGradient id="yellow-radial">
-                <stop offset="50%" stop-color="#fdd835"/>
-                <stop offset="95%" stop-color="#ffeb3b"/>
-              </radialGradient>
-            </defs>
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-        </div>
+    <header>
+      <h1 class="title">Simon says</h1>
+      <p class="tagline">Whatever Simon says you must do!</p>
+    </header>
+    <section class="game">
+      <div class="game-options">
+        <button class="start">Start</button>
+        <div class="roundcounter"></div>
+        <label for="strict-mode">Stict Mode: </label>
+        <input type="checkbox" class="strict-mode" name="strictmode" value="strict-mode" />
+        <div class="end-message">Game running!</div>
       </div>
-      <div class="blip" id="red">
-        <div class="circles">
-          <svg height="125" width="125" id="red-one" class="circle circle-one">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="red-two" class="circle circle-two">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="red-three" class="circle circle-three red">
-            <defs>
-              <radialGradient id="red-radial">
-                <stop offset="50%" stop-color="#d32f2f"/>
-                <stop offset="95%" stop-color="#e53935"/>
-              </radialGradient>
-            </defs>
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-        </div>
+    <div class="gameboard">
+      <div class="circles" id="yellow">
+        <svg height="125" width="125" id="yellow-one" class="circle circle-one">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="yellow-two" class="circle circle-two">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="yellow-three" class="circle circle-three yellow">
+          <defs>
+            <radialGradient id="yellow-radial">
+              <stop offset="50%" stop-color="#fdd835"/>
+              <stop offset="95%" stop-color="#ffeb3b"/>
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="60" r="40" />
+        </svg>
       </div>
-      <div class="blip" id="green">
-        <div class="circles">
-          <svg height="125" width="125" id="green-one" class="circle circle-one">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="green-two" class="circle circle-two">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="green-three" class="circle circle-three green">
-            <defs>
-              <radialGradient id="green-radial">
-                <stop offset="50%" stop-color="#43a047"/>
-                <stop offset="95%" stop-color="#4caf50"/>
-              </radialGradient>
-            </defs>
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-        </div>
+      <div class="circles" id="red">
+        <svg height="125" width="125" id="red-one" class="circle circle-one">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="red-two" class="circle circle-two">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="red-three" class="circle circle-three red">
+          <defs>
+            <radialGradient id="red-radial">
+              <stop offset="50%" stop-color="#d32f2f"/>
+              <stop offset="95%" stop-color="#e53935"/>
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="60" r="40" />
+        </svg>
       </div>
-      <div class="blip" id="blue">
-        <div class="circles">
-          <svg height="125" width="125" id="blue-one" class="circle circle-one">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="blue-two" class="circle circle-two">
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-          <svg height="125" width="125" id="blue-three" class="circle circle-three blue">
-            <defs>
-              <radialGradient id="blue-radial">
-                <stop offset="50%" stop-color="#1e88e5"/>
-                <stop offset="95%" stop-color="#2196f3"/>
-              </radialGradient>
-            </defs>
-            <circle cx="60" cy="60" r="40" />
-          </svg>
-        </div>
+      <div class="circles" id="green">
+        <svg height="125" width="125" id="green-one" class="circle circle-one">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="green-two" class="circle circle-two">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="green-three" class="circle circle-three green">
+          <defs>
+            <radialGradient id="green-radial">
+              <stop offset="50%" stop-color="#43a047"/>
+              <stop offset="95%" stop-color="#4caf50"/>
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+      </div>
+      <div class="circles" id="blue">
+        <svg height="125" width="125" id="blue-one" class="circle circle-one">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="blue-two" class="circle circle-two">
+          <circle cx="60" cy="60" r="40" />
+        </svg>
+        <svg height="125" width="125" id="blue-three" class="circle circle-three blue">
+          <defs>
+            <radialGradient id="blue-radial">
+              <stop offset="50%" stop-color="#1e88e5"/>
+              <stop offset="95%" stop-color="#2196f3"/>
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="60" r="40" />
+        </svg>
       </div>
     </div>
+    </section>
     <footer>
       <p class="madeby">Made by Fred Hawk</p>
       <a class="githublink" href="#" target="_blank">Project on Github</a>
