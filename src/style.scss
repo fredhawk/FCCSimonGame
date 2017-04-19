@@ -33,7 +33,11 @@ body {
           border: none;
           background: #00897b;
         }
-
+        input[type="checkbox"]{
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
       }
       .end-message {
         margin-bottom: 2rem;
@@ -162,5 +166,6 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    font-size: 0.7rem;
   }
 }
