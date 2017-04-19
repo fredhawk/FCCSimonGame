@@ -3,7 +3,7 @@ import css from './style.scss';
 const gameField = document.querySelector('.game');
 const startButton = document.querySelector('.start');
 const round = document.querySelector('.roundcounter');
-const end = document.querySelector('.end-message');
+const end = document.querySelector('.message');
 const strictMode = document.querySelector('.strict-mode');
 
 function randomizer(arr) {
