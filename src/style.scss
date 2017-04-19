@@ -9,11 +9,13 @@ body {
       color: #00897b;
       font-family: 'Kranky', cursive;
       font-size: 40px;
+      text-align: center;
       @media (min-width: 480px) {
         font-size: 54px;
       }
     }
     .tagline {
+      text-align: center;
       font-size: 1.2em;
     }
     .game {
@@ -32,6 +34,7 @@ body {
           border-radius: 4px;
           border: none;
           background: #00897b;
+          color: white;
         }
         input[type="checkbox"]{
           width: 20px;
