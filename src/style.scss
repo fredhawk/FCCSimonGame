@@ -20,6 +20,20 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      .game-options {
+        display: flex;
+        width: 70%;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+      .start {
+        padding: 1rem 2rem;
+      }
+      .end-message {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
     }
     .gameboard {
       width: 300px;
