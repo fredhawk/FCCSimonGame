@@ -26,9 +26,14 @@ body {
         justify-content: space-around;
         align-items: center;
         margin-bottom: 2rem;
-      }
-      .start {
-        padding: 1rem 2rem;
+        .start {
+          padding: .7rem 1.5rem;
+          font-size: 1.2rem;
+          border-radius: 4px;
+          border: none;
+          background: #00897b;
+        }
+
       }
       .end-message {
         margin-bottom: 2rem;
@@ -154,6 +159,8 @@ body {
     }
   }
   footer {
-
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }
