@@ -1,6 +1,6 @@
 import css from './style.scss';
 
-const gameField = document.querySelector('.game');
+const gameField = document.querySelector('.gameboard');
 const startButton = document.querySelector('.start');
 const round = document.querySelector('.roundcounter');
 const end = document.querySelector('.message');
@@ -45,7 +45,7 @@ const game = {
   },
   lightUpTile(tile) {
     const color = document.getElementById(tile);
-    const tileToFill = color.childNodes[1].childNodes[5];
+    const tileToFill = color.childNodes[5];
     switch (tile) {
       case 'yellow':
         tileToFill.style.fill = 'url(#yellow-radial)';
@@ -60,7 +60,7 @@ const game = {
         tileToFill.style.fill = 'url(#blue-radial)';
         break;
       default:
-        tileToFill.stule.fill = 'none';
+        tileToFill.style.fill = 'none';
         break;
     }
     setTimeout(() => this.removeFillFromCircle(tileToFill.id), 350);
