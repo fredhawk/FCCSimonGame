@@ -1,12 +1,12 @@
 import css from './style.scss';
 
-const gameField = document.querySelector('.gameboard');
+const gameField = document.querySelector('.game-board');
 const startButton = document.querySelector('.start');
-const round = document.querySelector('.roundcounter');
+const round = document.querySelector('.round-count');
 const end = document.querySelector('.message');
 const strictMode = document.querySelector('.strict-mode');
 
-function randomizer(arr) {
+function randomize(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
@@ -107,7 +107,7 @@ const game = {
   nextTurn() {
     this.roundCount = this.addCount(this.roundCount);
     round.textContent = this.roundCount;
-    this.targetSequence.push(randomizer(this.colors));
+    this.targetSequence.push(randomize(this.colors));
   },
   makeTurn(whichTurn) {
     if (whichTurn === 'repeat') {
